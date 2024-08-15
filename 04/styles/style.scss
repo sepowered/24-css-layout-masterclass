@@ -1,0 +1,262 @@
+@import "/node_modules/scss-reset/reset.css";
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+
+//variables
+$padding: 12px;
+$radius: 12px;
+$gridGap: 2px;
+
+//extends
+%alignCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  background-color: #191919;
+  padding: 48px;
+  font-family: Pretendard;
+  height: 100vh;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 1.7fr 1fr;
+  gap: $gridGap;
+  height: 100%;
+}
+
+.grid__col:first-child {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 2.4fr 1fr;
+  gap: $gridGap;
+
+  .title {
+    grid-column: span 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 16px;
+    background-color: white;
+    padding: 32px;
+
+    .title__bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .title__rate {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        span:first-child {
+          font-size: 1.8rem;
+          font-weight: 400;
+          opacity: 0.6;
+        }
+
+        span:last-child {
+          background-color: #fec830;
+          padding: 0.4rem 0.8rem;
+          border-radius: 32px;
+          font-weight: bold;
+          text-transform: uppercase;
+        }
+      }
+    }
+
+    .title__title {
+      @extend %alignCenter;
+      padding: 8rem 0;
+      font-weight: 900;
+      font-size: 6rem;
+    }
+
+    .title__paragraph {
+      display: flex;
+      font-weight: 700;
+      font-size: 2rem;
+      border-top: 2px solid black;
+      padding-top: 1.4rem;
+    }
+  }
+
+  .grid__img {
+    border-radius: $radius;
+    background-color: white;
+  }
+}
+
+.grid__col:last-child {
+  display: grid;
+  grid-template-columns: 1fr 0.8fr;
+  gap: $gridGap;
+
+  .grid__img {
+    border-radius: $radius;
+  }
+
+  .nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 16px;
+
+    .nav__items {
+      display: flex;
+      flex-direction: column;
+      color: white;
+      gap: 1.6rem;
+      text-transform: uppercase;
+      opacity: 0.7;
+    }
+
+    .nav__cta {
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end;
+      color: white;
+      text-transform: uppercase;
+      font-size: 1.6rem;
+      opacity: 0.5;
+      padding: 16px;
+    }
+  }
+
+  .grid__cases {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    %gridCaseHover {
+      rotate: -2.5deg;
+      transition-duration: 400ms;
+      box-shadow: 24px 24px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    .grid__cases--wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: $gridGap;
+
+      .grid__cases--item:first-child {
+        display: flex;
+        justify-content: flex-end;
+        background-color: #fec830;
+        text-transform: uppercase;
+        padding: 20px;
+        border-radius: $radius;
+
+        &:hover {
+          @extend %gridCaseHover;
+        }
+      }
+
+      .grid__cases--item:nth-child(2) {
+        display: flex;
+        justify-content: center;
+        padding: 24px;
+        background-color: white;
+        border-radius: $radius;
+        font-weight: 900;
+        font-size: 1.6rem;
+
+        &:hover {
+          @extend %gridCaseHover;
+        }
+      }
+    }
+
+    .grid__case:last-child {
+      display: flex;
+      align-items: flex-end;
+      color: white;
+      text-transform: uppercase;
+      font-size: 1.6rem;
+      opacity: 0.5;
+      padding: 32px;
+    }
+  }
+
+  .grid__qrcode {
+    @extend %alignCenter;
+    flex-direction: column;
+    background-color: white;
+    border-radius: $radius;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 16px;
+    gap: 16px;
+  }
+
+  .grid__review {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    grid-column: span 2;
+    border-radius: $radius;
+    background-color: white;
+    padding: $padding*2;
+
+    .grid__review--cells {
+      display: flex;
+      justify-content: space-between;
+
+      .grid__review--innercells {
+        display: flex;
+        gap: 1rem;
+
+        %gridReviewCell {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 100rem;
+        }
+
+        .grid__review--number {
+          @extend %gridReviewCell;
+          padding: 2rem 0.7rem;
+          border: 1px solid black;
+          font-size: 0.9rem;
+          font-weight: 700;
+        }
+
+        .grid__review--profilepic {
+          @extend %gridReviewCell;
+          background-image: url("https://picsum.photos/128");
+          padding: 2rem 2rem;
+        }
+      }
+
+      .grid__review--livepreview {
+        display: flex;
+        align-items: center;
+        gap: 1.4rem;
+
+        span {
+          font-size: 0.9rem;
+          text-transform: uppercase;
+          font-weight: 700;
+        }
+
+        .grid__review--refresh {
+          @extend %alignCenter;
+          border-radius: 100rem;
+          background-color: #fec830;
+          padding: 0.4rem;
+        }
+      }
+    }
+
+    .grid__review--paragraph {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 2rem;
+    }
+  }
+}
+
