@@ -1,0 +1,264 @@
+@import "/node_modules/scss-reset/reset.css";
+@import url('https://fonts.googleapis.com/css2?family=Sofia+Sans+Semi+Condensed:ital,wght@0,1..1000;1,1..1000&display=swap');
+
+$borderWidth: 0.16rem;
+$borderColor: black;
+
+//color
+$colorBlack: #000000;
+$colorGray: #393E44;
+$colorGray200: #7F848A;
+$colorGray100: #CCCFD2;
+$colorGray50: #E3E5E8;
+$colorRed: #E31B02;
+$colorPurple: #392AAA;
+$colorYellow: #ECC214;
+
+
+%alignCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  background-color: $colorGray50;
+  height: 100vh;
+
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+
+  font-family: "Sofia Sans Semi Condensed", sans-serif;
+  text-transform: uppercase;
+  color: $colorGray;
+
+  .capacity__info {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+
+    .capacity__info--bevels {
+      .capacity__info--bevel {
+        @extend %alignCenter;
+        flex-direction: column;
+        padding: 2.2rem 2rem 0 2rem;
+        gap: 1rem;
+
+        .capacity__info--bevel-circle {
+          display: flex;
+          align-items: center;
+          width: 10rem;
+          height: 10rem;
+          border-radius: 50%;
+          position: relative;
+
+          .capacity__info--bevel-innercircle {
+            position: absolute;
+            width: 2rem;
+            height: 2rem;
+            top: 4rem;
+            left: 4rem;
+            border-radius: 50%;
+            background-color: $colorGray50;
+          }
+
+        }
+
+        .capacity__info--bevel-info {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          width: 100%;
+
+          .capacity__info--bevel-storage {
+            span:first-child {
+              font-size: 2rem;
+            }
+          }
+
+          .capacity__info--bevel-icon {
+            display: flex;
+            gap: .2rem;
+
+            span {
+              background-color: #393E44;
+              height: .6rem;
+              width: .6rem;
+              border-radius: 50%;
+
+              &:last-child {
+                opacity: .2;
+              }
+            }
+          }
+        }
+
+
+        &:nth-child(1) {
+          .capacity__info--bevel-circle:first-child {
+            background-color: $colorGray;
+          }
+        }
+
+        &:nth-child(2) {
+          .capacity__info--bevel-circle:first-child {
+            background-color: $colorRed;
+          }
+
+          .capacity__info--bevel-icon {
+            span:nth-child(3) {
+              opacity: .2;
+            }
+          }
+        }
+
+        &:nth-child(3) {
+          .capacity__info--bevel-circle:first-child {
+            background-color: $colorGray100;
+          }
+
+          .capacity__info--bevel-icon {
+            span:nth-child(3), span:nth-child(2) {
+              opacity: .2;
+            }
+
+          }
+        }
+
+        &:nth-child(4) {
+          .capacity__info--bevel-circle:first-child {
+            background-color: $colorGray100;
+          }
+
+          .capacity__info--bevel-icon {
+            span {
+              opacity: .2;
+            }
+
+          }
+        }
+
+
+      }
+
+    }
+
+    .capacity__info--manage {
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      border-left: $borderWidth solid $borderColor;
+      border-right: $borderWidth solid $borderColor;
+
+      .capacity__info--storage {
+        gap: .4rem;
+        @extend %alignCenter;
+        padding: 0 2rem;
+        flex-direction: column;
+        border-bottom: $borderWidth solid $borderColor;
+
+        .capacity__info--status {
+          display: flex;
+          justify-content: flex-start;
+          align-items: flex-start;
+          flex-direction: column;
+
+          span:first-child {
+            font-size: 1rem;
+            font-weight: 500;
+          }
+
+          span:last-child {
+            font-weight: 350;
+            letter-spacing: -.4rem;
+            font-size: 10rem;
+          }
+        }
+      }
+
+      .capacity__info--nav {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        .capacity__info--navitems {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 4rem;
+
+          .capacity__info--navitem {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: 400;
+            gap: 1.4rem;
+          }
+
+        }
+      }
+    }
+
+    .capacity__info--bevels {
+      display: grid;
+      grid-template-rows: repeat(4, 1fr);
+
+      .capacity__info--bevel {
+        border-bottom: $borderWidth solid $borderColor;
+
+        &:last-child {
+          border-bottom: 0;
+        }
+      }
+    }
+  }
+
+  .capacity__charts {
+    display: grid;
+    grid-template-rows: 1.2fr .4fr .6fr 1fr 1.6fr;
+
+    .capacity__chart {
+      display: flex;
+      justify-content: space-between;
+      padding: 1.2rem 2rem 0 2rem;
+
+      span:first-child {
+        font-size: 2rem;
+      }
+
+      .capacity__chart--used {
+        span:first-child {
+          font-size: 2rem;
+          padding-right: .4rem;
+        }
+
+        span:last-child {
+          font-size: 1rem;
+        }
+      }
+
+      &:nth-child(2) {
+        background-color: $colorYellow;
+      }
+
+      &:nth-child(3) {
+        background-color: $colorGray200;
+      }
+
+      &:nth-child(4) {
+        background-color: $colorRed;
+
+        span {
+          color: white;
+        }
+      }
+
+      &:nth-child(5) {
+        background-color: $colorPurple;
+
+        span {
+          color: white;
+        }
+      }
+    }
+  }
+}
