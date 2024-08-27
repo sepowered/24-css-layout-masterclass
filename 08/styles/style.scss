@@ -1,0 +1,383 @@
+//reset
+@import "/node_modules/scss-reset/reset.css";
+
+//font
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap');
+@import url('https://fonts.cdnfonts.com/css/nexa');
+@import url('https://fonts.cdnfonts.com/css/nexa-bold');
+
+//color
+$bgColor: #f0f0f0;
+$colorBlack: #000000;
+$colorGray50: #d9d9d9;
+$colorGray100: #c7c2cb;
+$colorAccent: #03FF00;
+
+//style
+%alignCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+%border {
+  border-right: 2px solid $colorBlack;
+  border-bottom: 2px solid $colorBlack;
+}
+
+%borderAll {
+  border: 2px solid $colorBlack;
+}
+
+//transition
+@keyframes textflow1 {
+  0% {
+    transform: translateX(-10%);
+  }
+  50% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-10%);
+  }
+}
+
+@keyframes textflow2 {
+  0% {
+    transform: translateY(10000%) rotateZ(-90deg);
+  }
+  50% {
+    transform: translateY(0%) rotateZ(-90deg);
+  }
+  100% {
+    transform: translateY(10000%) rotateZ(-90deg);
+  }
+}
+
+@keyframes textflow3 {
+  0% {
+    transform: translateY(10000%) rotateZ(90deg);
+  }
+  50% {
+    transform: translateY(0%) rotateZ(90deg);
+  }
+  100% {
+    transform: translateY(10000%) rotateZ(90deg);
+  }
+}
+
+@keyframes textflow4 {
+  0% {
+    transform: translateX(-10%);
+  }
+  50% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-10%);
+  }
+}
+
+body {
+  background-color: $colorAccent;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 2.4rem 1fr 2.4rem;
+  grid-template-rows: 2.4rem 1fr 2.4rem;
+
+  .bar__text {
+    font-family: "Black Han Sans";
+    position: relative;
+    @extend %alignCenter;
+    overflow: hidden;
+
+    span {
+      position: absolute;
+      width: max-content;
+    }
+
+    &:nth-child(2) {
+      span {
+        animation: textflow1 60s infinite;
+      }
+
+    }
+
+    &:nth-child(4) {
+      span {
+        transform: rotateZ(-90deg);
+        animation: textflow2 40s infinite;
+      }
+    }
+
+    &:nth-child(6) {
+      span {
+        transform: rotateZ(90deg);
+        animation: textflow3 40s infinite;
+      }
+    }
+
+    &:nth-child(8) {
+      transform: rotateZ(180deg);
+      span {
+        animation: textflow4 60s infinite;
+      }
+
+    }
+  }
+
+  .bar__dot {
+    @extend %alignCenter;
+
+    span {
+      width: .4rem;
+      height: .4rem;
+      background-color: $colorBlack;
+    }
+  }
+
+  .grid__wrapper {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    //height: 100%;
+    background-color: $colorBlack;
+    @extend %borderAll;
+
+    .grid__header {
+      font-family: Black Han Sans;
+      font-size: 8rem;
+      text-transform: uppercase;
+      grid-column: span 8;
+      grid-row: span 2;
+      @extend %alignCenter;
+      background-color: $colorGray50;
+      border-bottom: 2px solid $colorBlack;
+    }
+
+    .grid__navitem {
+      background-color: $colorGray50;
+      font-family: Black Han Sans;
+      font-size: 1.2rem;
+      @extend %border;
+      @extend %alignCenter;
+      justify-content: flex-start;
+      padding-left: 1.2rem;
+
+      &:nth-child(5) {
+        grid-column: span 2;
+      }
+
+      &:nth-child(6) {
+        border-right: none;
+      }
+
+    }
+
+    .grid__gallery--lg {
+      @extend %alignCenter;
+      @extend %borderAll;
+      background-color: $bgColor;
+      border-top: none;
+      border-right: none;
+      grid-column: span 2;
+      grid-row: span 4;
+      padding: 1rem;
+
+      .grid__gallery--image {
+        @extend %borderAll;
+        width: 100%;
+        height: 100%;
+        background-image: url("https://picsum.photos/512");
+      }
+
+    }
+
+    .grid__event {
+      @extend %alignCenter;
+      @extend %border;
+      justify-content: flex-start;
+      padding-left: 1.2rem;
+      gap: .4rem;
+      font-size: 1.2rem;
+
+
+      span:first-child {
+        font-family: Black Han Sans;
+      }
+
+      span:last-child {
+        font-family: Nexa;
+        font-weight: bold;
+        opacity: .4;
+      }
+
+      &:nth-child(8) {
+        background-color: $bgColor;
+        grid-column: span 4;
+      }
+
+      &:nth-child(9) {
+        background-color: $bgColor;
+        grid-column: span 2;
+        border-right: none;
+      }
+    }
+
+
+    .grid__gallery--md {
+      @extend %alignCenter;
+      @extend %border;
+      background-color: $bgColor;
+      grid-column: span 2;
+      grid-row: span 2;
+      padding: 1rem;
+
+      .grid__gallery--image {
+        @extend %borderAll;
+        width: 100%;
+        height: 100%;
+        background-image: url("https://picsum.photos/512");
+      }
+    }
+
+    .grid__article {
+      @extend %border;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background-color: $bgColor;
+      grid-column: span 2;
+      grid-row: span 2;
+      padding: 1rem;
+
+      .grid__article--info {
+        display: flex;
+        justify-content: space-between;
+        font-family: Nexa;
+        font-size: .8rem;
+        font-weight: bold;
+      }
+
+      .grid__article--paragraph {
+        display: flex;
+        flex-direction: column;
+        gap: .4rem;
+
+        .grid__article--paragraph-title {
+          font-family: Black Han Sans;
+          font-size: 1.2rem;
+        }
+
+        .grid__article--paragraph-innerparagraph {
+          font-family: Nexa;
+          font-weight: bold;
+          font-size: .78rem;
+          line-height: 1rem;
+        }
+      }
+
+      &:nth-child(11) {
+        border-bottom-right-radius: 1.4rem;
+      }
+
+      &:nth-child(12) {
+        border-right: none;
+        border-bottom-left-radius: 1.4rem;
+      }
+
+      &:nth-child(13) {
+        grid-column: span 4;
+        border-bottom: none;
+        border-top-right-radius: 1.4rem;
+
+        .grid__article--paragraph-title {
+          display: flex;
+          align-items: center;
+          gap: .4rem;
+
+          span:last-child {
+            font-family: Nexa;
+            font-weight: bold;
+            opacity: .4;
+          }
+        }
+      }
+    }
+
+    .grid__mailing {
+      background-color: $colorGray50;
+      border-top-left-radius: 1.4rem;
+      grid-column: span 2;
+      grid-row: span 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 2.4rem 1rem;
+
+      span {
+        font-family: Black Han Sans;
+        font-size: 1.2rem;
+      }
+
+      form {
+        display: flex;
+        justify-content: center;
+        border-bottom: 2px solid $colorBlack;
+
+        input[type="email"] {
+          background-color: transparent;
+          border: none;
+          padding-bottom: .4rem;
+          font-family: Nexa;
+          font-weight: bold;
+          width: 100%;
+
+          &::placeholder {
+            color: $colorBlack;
+          }
+        }
+
+        input[type="button"] {
+          font-family: Black Han Sans;
+          padding-bottom: .4rem;
+        }
+      }
+    }
+  }
+
+  .grid__links {
+    @extend %alignCenter;
+    justify-content: flex-start;
+    padding-left: .8rem;
+    background-color: $colorGray50;
+    font-family: Black Han Sans;
+    font-size: 1.2rem;
+
+
+    &:nth-child(15), &:nth-child(17) {
+      border-left: 2px solid $colorBlack;
+    }
+
+    &:nth-child(15) {
+      @extend %border;
+    }
+
+    &:nth-child(16) {
+      @extend %border;
+      border-right: none;
+    }
+
+    &:nth-child(17) {
+      @extend %border;
+      border-bottom: none;
+    }
+
+    &:last-child {
+
+    }
+  }
+
+}
+
+
