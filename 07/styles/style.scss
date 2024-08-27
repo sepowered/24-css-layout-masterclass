@@ -1,0 +1,185 @@
+//reset
+@import "/node_modules/scss-reset/reset.css";
+
+//font
+//@import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+@import url('https://fonts.cdnfonts.com/css/nexa');
+@import url('https://fonts.cdnfonts.com/css/nexa-bold');
+
+//color
+$bgColor: #f0f0f0;
+$orange: #ff8100;
+$lightGray: #c7c2cb;
+$lightGreen: #c8cac7;
+
+//styles
+%gridBorder {
+  border-left: .2rem solid black;
+  border-bottom: .2rem solid black;
+}
+
+%boxBorder {
+  border: .2rem solid black;
+}
+
+%alignCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes textflowy {
+  0% {
+    transform: translateY(-3000%) rotateZ(90deg);
+  }
+  100% {
+    transform: translateY(calc(0% - 500px)) rotateZ(90deg);
+  }
+
+}
+
+body {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: .3fr repeat(4, 1fr);
+  grid-template-rows: repeat(2, .3fr) repeat(2, 1fr);
+  background-color: $bgColor;
+
+  .header__symbol {
+    grid-column: span 2;
+    grid-row: span 2;
+    @extend %gridBorder;
+    border-left: none;
+    @extend %alignCenter;
+  }
+
+  .header__title {
+    grid-column: span 3;
+    @extend %gridBorder;
+    @extend %alignCenter;
+    justify-content: flex-start;
+    padding-left: 2rem;
+    font-family: Archivo Black;
+    font-weight: 700;
+    font-size: 3rem;
+    text-transform: uppercase;
+  }
+
+  .header__nav--item {
+    @extend %gridBorder;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-weight: 700;
+    gap: .3rem;
+    padding-left: 2rem;
+
+    span:first-child {
+      font-family: Archivo Black;
+      font-size: 1.6rem;
+    }
+
+    span:last-child {
+      font-family: Nexa;
+      font-weight: 700;
+      font-size: .8rem;
+    }
+
+  }
+
+  .paragraph {
+    display: flex;
+    flex-direction: column;
+    @extend %gridBorder;
+    padding: 2.6rem;
+    gap: 1.6rem;
+    line-height: 1.8rem;
+
+    h2 {
+      font-family: Archivo Black;
+      font-weight: 700;
+      font-size: 2rem;
+    }
+
+    p {
+      font-family: Nexa;
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+
+    &:nth-child(8) {
+      background-image: url("https://picsum.photos/256");
+      background-size: cover;
+    }
+
+    //styles for needs more option
+
+    &:nth-child(10) {
+      padding: 2rem;
+      background-color: $lightGray;
+
+      .paragraph__box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        height: 100%;
+        background-color: $bgColor;
+        @extend %boxBorder;
+        padding: 4rem;
+
+        .paragraph__innerbox {
+          display: flex;
+          gap: 1.2rem;
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        h2 {
+          font-size: 2rem;
+          line-height: 2rem;
+        }
+
+        span {
+          font-family: Nexa;
+          text-decoration: underline;
+        }
+      }
+
+    }
+
+
+  }
+
+  #here {
+    grid-column: span 3;
+    display: flex;
+
+    h1 {
+      font-family: Archivo Black;
+      font-size: 10rem;
+      line-height: 10rem;
+      font-stretch: ultra-expanded;
+    }
+  }
+
+  .flowy {
+    @extend %alignCenter;
+    grid-row: span 3;
+    background-color: black;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+
+    span {
+      color: $bgColor;
+      font-family: Archivo Black;
+      font-size: 2rem;
+      position: absolute;
+      animation: textflowy 5s linear infinite;
+
+    }
+  }
+
+}
