@@ -1,0 +1,93 @@
+//reset
+@import "/node_modules/scss-reset/reset.css";
+
+//color
+$green: #5BBB42;
+$white: #DEE1D6;
+
+
+body {
+  background-color: black;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Helvetica Neue";
+  font-weight: bold;
+}
+
+.poster {
+  width: 40%;
+  height: 100%;
+  display: grid;
+  grid-template-rows: .4fr 1fr;
+
+  .poster__header {
+    display: grid;
+    grid-template-columns: .6fr .4fr;
+    grid-template-rows: .4fr .6fr;
+    padding: 0 0 1.2rem 2rem;
+    background-color: $green;
+
+
+    .poster__date {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .poster__info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .poster__title {
+      display: flex;
+      align-items: center;
+      font-size: 7.4rem;
+    }
+
+    .poster__subtitle {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      color: $white;
+      font-size: 1.6rem;
+
+    }
+
+  }
+
+  .poster__bottom {
+    overflow: hidden;
+
+    .poster__bottom--dots {
+      display: grid;
+      background-color: black;
+      grid-template-columns: repeat(11, 1fr);
+      grid-template-rows: repeat(11, 1fr);
+      transform: scale(1.1);
+      height: 100%;
+      gap: .6rem;
+
+      .dot {
+        background-color: $green;
+        border-radius: 50%;
+
+        @for $i from 1 through 9 {
+          @for $j from 0 through ($i - 1) {
+            &:nth-child(#{$i * 11 + 2 + $j}) {
+              background-color: $white;
+            }
+          }
+
+        }
+      }
+
+
+    }
+
+  }
+}
+
