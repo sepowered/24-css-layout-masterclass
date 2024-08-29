@@ -1,0 +1,92 @@
+//reset
+@import "/node_modules/scss-reset/reset.css";
+
+//color
+$bg: #dde1d3;
+$blue: #00a0c8;
+$red: #d03022;
+$burntRed: #573533;
+
+body {
+  background-color: black;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Helvetica Neue";
+  font-weight: bold;
+}
+
+.poster {
+  width: 40%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 5fr 1fr;
+  grid-template-rows: repeat(10, 1fr);
+  background-color: $bg;
+  padding: 2rem;
+
+  .poster__blue1 {
+    grid-column: span 3;
+    background-color: $blue;
+  }
+
+  .poster__bg1 {
+    background-color: $bg;
+    grid-row: span 2;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    line-height: 1.3rem;
+
+    &:nth-child(3) {
+      justify-content: flex-end;
+    }
+
+    &:nth-child(8) {
+      font-size: 4rem;
+      line-height: 4.2rem;
+      justify-content: flex-end;
+    }
+
+    &:nth-child(11) {
+      .poster__bg1--p {
+        display: flex;
+        flex-direction: column;
+      }
+
+      justify-content: space-between;
+    }
+
+  }
+
+  .poster__blue2 {
+    background-color: $blue;
+    grid-row: span 2;
+  }
+
+  .poster__burntred1 {
+    background-color: $burntRed;
+    grid-row: span 4;
+  }
+
+  .poster__red1 {
+    background-color: $red;
+  }
+
+  .poster__blue3 {
+    background-color: $blue;
+  }
+
+  .poster__red2 {
+    background-color: $red;
+    grid-row: span 2;
+  }
+
+  .poster__red3 {
+    background-color: $red;
+    grid-column: span 3;
+  }
+
+}
+
